@@ -2,7 +2,7 @@ from __future__ import division
 
 from math import pi
 
-from .arena import Arena, draw_triangular_corner_zones
+from .arena import Arena, draw_corner_zones
 
 from ..markers import Token
 
@@ -37,4 +37,4 @@ class SunnySideUpArena(Arena):
     def draw_background(self, surface, display):
         super(SunnySideUpArena, self).draw_background(surface, display)
 
-        draw_triangular_corner_zones(self, display, surface)
+        draw_corner_zones(self, display, surface)

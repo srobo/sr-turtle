@@ -3,12 +3,13 @@ from __future__ import division
 import threading
 import pygame
 
-from .arenas import PiratePlunderArena, CTFArena, SunnySideUpArena, ABCArena
+from .arenas import PiratePlunderArena, CTFArena, SunnySideUpArena, ABCArena, CalderaArena
 from .display import Display
 
-DEFAULT_GAME = 'pirate-plunder'
+DEFAULT_GAME = 'caldera'
 
-GAMES = {'pirate-plunder': PiratePlunderArena,
+GAMES = {'caldera': CalderaArena,
+         'pirate-plunder': PiratePlunderArena,
          'ctf': CTFArena,
          'sunny-side-up': SunnySideUpArena,
          'abc': ABCArena,

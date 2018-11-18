@@ -1,6 +1,6 @@
 from math import pi
 
-from .arena import Arena, draw_triangular_corner_zones
+from .arena import Arena, draw_corner_zones
 
 from ..markers import Token
 from ..vision import MARKER_TOKEN_A, MARKER_TOKEN_B, MARKER_TOKEN_C
@@ -56,4 +56,4 @@ class ABCArena(Arena):
     def draw_background(self, surface, display):
         super(ABCArena, self).draw_background(surface, display)
 
-        draw_triangular_corner_zones(self, display, surface)
+        draw_corner_zones(self, display, surface)
