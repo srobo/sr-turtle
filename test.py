@@ -1,5 +1,7 @@
-from sr.robot import *
+#!./run
 
+from sr.robot import *
+from sys import exit
 import time
 
 SEARCHING, DRIVING = range(2)

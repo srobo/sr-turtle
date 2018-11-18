@@ -1,2 +1,8 @@
 .*.swp
 *.pyc
+
+env/
+build/
+dist
+*.spec
+simulator.zip
