@@ -2,4 +2,4 @@
 
 set -e
 
-./run test.py
+./simulator robot.py

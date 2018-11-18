@@ -8,8 +8,8 @@ pip install pyinstaller
 
 rm -rf dist/ simulator.zip
 
-pyinstaller --paths env/lib/python2.7/site-packages --onefile --clean run.py
+pyinstaller --paths env/lib/python2.7/site-packages --onefile --clean simulator.py
 
-cp -r games/ sr/ extra/* test.py dist/
+cp -r games/ sr/ extra/* robot.py dist/
 
 cd dist && zip -lr ../simulator.zip * && cd -

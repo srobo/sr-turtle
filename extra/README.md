@@ -3,18 +3,18 @@ Writing and running a program
 
 Keep your programs in the directory containing the simulator files, so that the `sr` module can be imported.
 
-To run one or more scripts in the simulator, use `run.py`, passing it the file names. You can also pass it a configuration [YAML](http://yaml.org/) file with the `--config` switch, which sets the game to be used and other parameters (such as the number of tokens in a Pirate Plunder game).
+To run one or more scripts in the simulator, use `simulator.py`, passing it the file names. You can also pass it a configuration [YAML](http://yaml.org/) file with the `--config` switch, which sets the game to be used and other parameters (such as the number of tokens in a Pirate Plunder game).
 
-An example program can be found in `test.py`, which implements a simple state machine and does a pretty shoddy job of finding and picking up tokens. To try it, run the following:
+An example program can be found in `robot.py`, which implements a simple state machine and does a pretty shoddy job of finding and picking up tokens. To try it, run the following:
 
 ```bash
-$ python run.py test.py
+$ python simulator.py robot.py
 ```
 
 To pit three test robots against one another, pass the script in three times:
 
 ```bash
-$ python run.py test.py test.py test.py
+$ python simulator.py robot.py robot.py robot.py
 ```
 
 Robot API
