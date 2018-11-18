@@ -21,6 +21,12 @@ On Ubuntu, this can be accomplished by:
 * Get the location. In my case this was `/usr/local/lib/python2.7/dist-packages`
 * Create symlink: `ln -s path/to/simulator/sr/robot /usr/local/lib/python2.7/dist-packages/sr/`
 
+## Shipping the simulator
+
+The simulator is distributed using `pyinstaller`. Execute the script at `scripts/ship-simulator.sh`, and it'll create a `simulator.zip` with the required files in.
+
+This currrently only works for Mac and Linux. Windows instructions coming soon!
+
 ## Writing and running a program
 
 Instructions on writing and running a program can be found in `extra/README.md`.
