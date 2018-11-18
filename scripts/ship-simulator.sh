@@ -12,4 +12,4 @@ pyinstaller --paths env/lib/python2.7/site-packages --onefile --clean simulator.
 
 cp -r games/ sr/ extra/* robot.py dist/
 
-cd dist && zip -lr ../simulator.zip * && cd -
+cd dist && zip -r ../simulator.zip * && cd -
