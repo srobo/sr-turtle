@@ -2,4 +2,4 @@
 
 set -e
 
-./simulator robot.py
+./simulator robot.py $@
