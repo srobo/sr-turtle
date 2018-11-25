@@ -42,7 +42,7 @@ class CalderaArena(Arena):
         for zone in range(0, 4):
             for i, location in enumerate(token_locations_offsets_from_zone):
                 rotated_location = rotate(location[0] - 4, location[1] - 4, (pi / 2) * zone)
-                token = Token(self, token_ids[zone], damping=0.5)
+                token = Token(self, token_ids[zone], damping=10)
                 token.location = rotated_location
                 self.objects.append(token)
 
