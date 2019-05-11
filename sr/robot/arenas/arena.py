@@ -178,7 +178,7 @@ class Arena(object):
 
     ## Public Methods ##
 
-    def contains_point(self, (x, y)):
+    def contains_point(self, x, y):
         if not (self.left < x < self.right):
             return False, 0, max(self.left, min(x, self.right))
         elif not (self.top < y < self.bottom):
