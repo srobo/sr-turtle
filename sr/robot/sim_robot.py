@@ -158,7 +158,7 @@ class SimRobot(GameObject):
                     -HALF_GRAB_SECTOR_WIDTH < direction - heading < HALF_GRAB_SECTOR_WIDTH and
                     not o.grabbed)
 
-        objects = filter(object_filter, self.arena.objects)
+        objects = list(filter(object_filter, self.arena.objects))
         if objects:
             self._holding = objects[0]
             if hasattr(self._holding, '_body'):
