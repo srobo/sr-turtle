@@ -2,7 +2,7 @@
 
 from __future__ import division
 
-import time, exceptions
+import time
 from math import pi, sin, cos, degrees, hypot, atan2
 
 from .game_object import GameObject
@@ -19,7 +19,7 @@ HALF_FOV_WIDTH = pi / 6
 
 GRABBER_OFFSET = 0.25
 
-class AlreadyHoldingSomethingException(exceptions.Exception):
+class AlreadyHoldingSomethingException(Exception):
     def __str__(self):
         return "The robot is already holding something."
 
@@ -158,7 +158,7 @@ class SimRobot(GameObject):
                     -HALF_GRAB_SECTOR_WIDTH < direction - heading < HALF_GRAB_SECTOR_WIDTH and
                     not o.grabbed)
 
-        objects = filter(object_filter, self.arena.objects)
+        objects = list(filter(object_filter, self.arena.objects))
         if objects:
             self._holding = objects[0]
             if hasattr(self._holding, '_body'):
@@ -224,4 +224,3 @@ class SimRobot(GameObject):
                           timestamp=acq_time)
 
         return [marker_map(obj) for obj in self.arena.objects if object_filter(obj)]
-

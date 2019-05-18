@@ -109,7 +109,7 @@ class Arena(object):
     def _populate_wall(self, left, right, count, start, angle):
         left_bound_x, left_bound_y = left
         right_bound_x, right_bound_y = right
-        for i in xrange(count):
+        for i in range(count):
             delta = (i + 1) / (count + 1)
             x = lerp(delta, left_bound_x, right_bound_x)
             y = lerp(delta, left_bound_y, right_bound_y)
@@ -178,7 +178,7 @@ class Arena(object):
 
     ## Public Methods ##
 
-    def contains_point(self, (x, y)):
+    def contains_point(self, x, y):
         if not (self.left < x < self.right):
             return False, 0, max(self.left, min(x, self.right))
         elif not (self.top < y < self.bottom):
