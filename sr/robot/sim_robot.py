@@ -6,7 +6,7 @@ import time, exceptions
 from math import pi, sin, cos, degrees, hypot, atan2
 
 from .game_object import GameObject
-from .vision import Marker, Point, PolarCoord, create_marker_info_by_type, MARKER_ROBOT
+from .vision import Marker, Point, PolarCoord
 
 import pypybox2d
 
@@ -85,10 +85,6 @@ class SimRobot(GameObject):
             return # Slight hack: deal with the initial setting from the constructor
         with self.lock:
             self._body.angle = _new_heading
-
-    @property
-    def marker_info(self):
-        return create_marker_info_by_type(MARKER_ROBOT, self.zone)
 
     def __init__(self, simulator):
         self._body = None
