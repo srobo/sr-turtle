@@ -1,5 +1,5 @@
 from .game_object import GameObject
-from .vision import create_marker_info_by_type, MARKER_TOKEN, MARKER_ARENA
+from .vision import create_marker_info_by_type, MARKER_TOKEN_GOLD, MARKER_TOKEN_SILVER, MARKER_ARENA
 
 import pypybox2d
 
@@ -26,7 +26,7 @@ class Token(GameObject):
             return # Slight hack: deal with the initial setting from the constructor
         self._body.angle = _new_heading
 
-    def __init__(self, arena, number, damping, marker_type=MARKER_TOKEN):
+    def __init__(self, arena, number, damping, marker_type=MARKER_TOKEN_GOLD):
         self._body = arena._physics_world.create_body(position=(0, 0),
                                                       angle=0,
                                                       linear_damping=damping,

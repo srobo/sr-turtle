@@ -78,7 +78,7 @@ Each `Marker` object has the following attributes:
 
 * `info`: a `MarkerInfo` object describing the marker itself. Has the following attributes:
   * `code`: the numeric code of the marker.
-  * `marker_type`: the type of object the marker is attached to (either `MARKER_TOKEN` or `MARKER_ARENA`).
+  * `marker_type`: the type of object the marker is attached to (either `MARKER_TOKEN_GOLD`, `MARKER_TOKEN_SILVER` or `MARKER_ARENA`).
   * `offset`: offset of the numeric code of the marker from the lowest numbered marker of its type. For example, token number 3 has the code 43, but offset 3.
   * `size`: the size that the marker would be in the real game, for compatibility with the SR API.
 * `centre`: the location of the marker in polar coordinates, as a `PolarCoord` object. Has the following attributes:
@@ -96,7 +96,7 @@ markers = R.see()
 print "I can see", len(markers), "markers:"
 
 for m in markers:
-    if m.info.marker_type == MARKER_TOKEN:
+    if m.info.marker_type in (MARKER_TOKEN_GOLD, MARKER_TOKEN_SILVER):
         print " - Token {0} is {1} metres away".format( m.info.offset, m.dist )
     elif m.info.marker_type == MARKER_ARENA:
         print " - Arena marker {0} is {1} metres away".format( m.info.offset, m.dist )
