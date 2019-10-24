@@ -12,8 +12,8 @@ marker_offsets = {
 
 marker_sizes = {
     MARKER_ARENA: 0.25 * (10.0/12),
-    MARKER_TOKEN_GOLD: 0.25 * (10.0/12),
-    MARKER_TOKEN_SILVER: 0.25 * (10.0/12),
+    MARKER_TOKEN_GOLD: 0.2 * (10.0/12),
+    MARKER_TOKEN_SILVER: 0.2 * (10.0/12),
 
 }
 
