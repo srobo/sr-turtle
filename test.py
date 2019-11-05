@@ -30,6 +30,10 @@ def get_gold_tokens():
     for token in R.see():
         if token.info.marker_type is MARKER_TOKEN_GOLD:
             gold_tokens.append(token)
+
+    # Sort list with the closest token first
+    gold_tokens.sort(key=lambda m: m.dist)
+
     return gold_tokens
 
 while True:
