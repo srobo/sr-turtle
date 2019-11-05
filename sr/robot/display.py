@@ -13,11 +13,21 @@ def get_surface(name):
 
     return sprites[name]
 
+
+def _int_without_remainder(val):
+    as_int = int(val)
+    assert as_int == val, "Unable to convert {!r} to integer - it has a fractional part".format(val)
+    return as_int
+
+
 class Display(object):
     def __init__(self, arena):
         self.arena = arena
         arena_w, arena_h = self.arena.size
-        self.size = (arena_w * PIXELS_PER_METER, arena_h * PIXELS_PER_METER)
+        self.size = (
+            _int_without_remainder(arena_w * PIXELS_PER_METER),
+            _int_without_remainder(arena_h * PIXELS_PER_METER),
+        )
 
         pygame.display.init()
         self._window = pygame.display.set_mode(self.size)
