@@ -2,6 +2,7 @@ from .arena import Arena
 from .pirate_plunder_arena import PiratePlunderArena
 from .ctf_arena import CTFArena
 from .sunny_side_up_arena import SunnySideUpArena
+from .abc_arena import ABCArena
 from .two_colours_arena import TwoColoursArena
 
 __all__ = [
