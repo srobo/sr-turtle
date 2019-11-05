@@ -16,16 +16,6 @@ OUTER_CIRCLE_RADIUS = 1.3
 TOKENS_PER_CIRCLE = 8
 PEDESTAL_COLOR = (0x80, 0x80, 0x80)
 
-start_locations = [(-3.6, -3.6),
-                   (3.6, -3.6),
-                   (3.6, 3.6),
-                   (-3.6, 3.6)]
-
-start_headings = [0.25 * pi,
-                  0.75 * pi,
-                  -0.75 * pi,
-                  -0.25 * pi]
-
 
 class GoldToken(Token):
     def __init__(self, arena, marker_number):
