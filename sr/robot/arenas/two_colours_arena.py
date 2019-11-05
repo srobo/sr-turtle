@@ -9,10 +9,10 @@ from arena import ARENA_MARKINGS_COLOR, ARENA_MARKINGS_WIDTH, Arena
 from ..markers import Token
 from ..vision import MARKER_TOKEN_GOLD, MARKER_TOKEN_SILVER
 
-HOME_ZONE_SIZE = 3
+HOME_ZONE_SIZE = 2.5
 
 INNER_CIRCLE_RADIUS = 0.42
-OUTER_CIRCLE_RADIUS = 1.3
+OUTER_CIRCLE_RADIUS = 1.25  # Some tokens are at 1200ish, others at 1270ish
 TOKENS_PER_CIRCLE = 8
 PEDESTAL_COLOR = (0x80, 0x80, 0x80)
 
@@ -38,10 +38,12 @@ class SilverToken(Token):
 
 
 class TwoColoursArena(Arena):
-    start_locations = [(-3.6, -3.6),
-                       (3.6, -3.6),
-                       (3.6, 3.6),
-                       (-3.6, 3.6)]
+    size = (5.75, 5.75)
+
+    start_locations = [(-2.6, -2.6),
+                       (2.6, -2.6),
+                       (2.6, 2.6),
+                       (-2.6, 2.6)]
 
     start_headings = [0.25 * pi,
                       0.75 * pi,
