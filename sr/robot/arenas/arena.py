@@ -13,9 +13,9 @@ import pypybox2d
 
 MARKERS_PER_WALL = 7
 
-ARENA_FLOOR_COLOR = (0x11, 0x18, 0x33)
+ARENA_FLOOR_COLOR = (0x12, 0x2B, 0x5E)
 ARENA_MARKINGS_COLOR = (0xD0, 0xD0, 0xD0)
-ARENA_MARKINGS_WIDTH = 2
+ARENA_MARKINGS_WIDTH = 3
 
 CORNER_COLOURS = (
     (0x00, 0xff, 0x00),
@@ -42,9 +42,9 @@ def fade_to_white(colour, opacity = 0.6):
 def lerp(delta, a, b):
     return delta*b + (1-delta)*a
 
-def draw_triangular_corner_zones(arena, display, surface):
+def draw_corner_zones(arena, display, surface, shape='Triangular'):
     """
-    Draw triangular corner zones for the given arena onto the given display.
+    Draw corner zones for the given arena onto the given display.
     """
 
     def get_coord(x, y):
@@ -65,18 +65,25 @@ def draw_triangular_corner_zones(arena, display, surface):
         line(a, c)
         line(b, c)
 
-    def scoring_zone(corner_pos, colour):
+    def scoring_zone(corner_pos, colour, shape):
         x, y = corner_pos
-        length = arena.scoring_zone_side
-        a = get_coord(towards_zero(x, length), y)
-        b = get_coord(x, towards_zero(y, length))
-        c = get_coord(x, y)
-
-        pygame.draw.polygon(surface, colour, (a, b, c), 0)
+        if shape is 'Triangular':
+            length = arena.scoring_zone_side
+            a = get_coord(towards_zero(x, length), y)
+            b = get_coord(x, towards_zero(y, length))
+            c = get_coord(x, y)
+            pygame.draw.polygon(surface, colour, (a, b, c), 0)
+        elif shape is 'Square':
+            length = arena.starting_zone_side
+            a = get_coord(towards_zero(x, length), y)
+            b = get_coord(x, y)
+            c = get_coord(x, towards_zero(y, length))
+            d = get_coord(towards_zero(x, length), towards_zero(y, length))
+            pygame.draw.polygon(surface, colour, (a, b, c, d), 0)
 
     for i, pos in enumerate(arena.corners):
         colour = fade_to_white(CORNER_COLOURS[i])
-        scoring_zone(pos, colour)
+        scoring_zone(pos, colour, shape=shape)
         starting_zone(pos)
 
 class Arena(object):
@@ -195,11 +202,15 @@ class Arena(object):
             if hasattr(obj, "tick"):
                 obj.tick(time_passed)
 
-    def draw_background(self, surface, display):
-        surface.fill(ARENA_FLOOR_COLOR)
-
+    def draw_motif(self, surface, display):
         # Motif
         motif = get_surface(self.motif_name)
         x, y = display.to_pixel_coord((0, 0), self)
         w, h = motif.get_size()
         surface.blit(motif, (x - w / 2, y - h / 2))
+
+    def draw_background(self, surface, display):
+        surface.fill(ARENA_FLOOR_COLOR)
+        self.draw_motif(surface, display)
+
+
