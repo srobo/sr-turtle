@@ -1,16 +1,13 @@
 from __future__ import print_function
 
-from sr.robot import *
-
 import time
 
-SEARCHING, DRIVING = range(2)
+from sr.robot import *
+
+SEARCHING = "SEARCHING"
+DRIVING = "DRIVING"
 
 R = Robot()
-
-MARKER_TOKENS = (MARKER_TOKEN, MARKER_TOKEN_A, MARKER_TOKEN_B, MARKER_TOKEN_C)
-
-token_filter = lambda m: m.info.marker_type in MARKER_TOKENS
 
 def drive(speed, seconds):
     R.motors[0].m0.power = speed
@@ -28,12 +25,21 @@ def turn(speed, seconds):
 
 state = SEARCHING
 
+def get_gold_tokens():
+    gold_tokens = []
+    for token in R.see():
+        if token.info.marker_type is MARKER_TOKEN_GOLD:
+            gold_tokens.append(token)
+    return gold_tokens
+
 while True:
     if state == SEARCHING:
-        print("Searching...")
-        tokens = list(filter(token_filter, R.see()))
+        print("Searching for gold tokens...")
+        tokens = get_gold_tokens()
+        print(tokens)
         if len(tokens) > 0:
             m = tokens[0]
+            # TODO: Pick the closest token, not just any token.
             print("Token sighted. {0} is {1}m away, bearing {2} degrees." \
                   .format(m.info.offset, m.dist, m.rot_y))
             state = DRIVING
@@ -45,7 +51,7 @@ while True:
 
     elif state == DRIVING:
         print("Aligning...")
-        tokens = list(filter(token_filter, R.see()))
+        tokens = get_gold_tokens()
         if len(tokens) == 0:
             state = SEARCHING
 
@@ -73,4 +79,4 @@ while True:
 
             elif m.rot_y > 15:
                 print("Right a bit...")
-                turn (12.5, 0.5)
+                turn(12.5, 0.5)

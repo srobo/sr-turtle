@@ -65,3 +65,7 @@ class Display(object):
         x, y = ((x + offset_x) * PIXELS_PER_METER, (y + offset_y) * PIXELS_PER_METER)
         return (x, y)
 
+    def to_pixel_dimension(self, world_dimension):
+        x,y = world_dimension
+        return x * PIXELS_PER_METER, y * PIXELS_PER_METER
+
