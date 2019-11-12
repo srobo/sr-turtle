@@ -4,10 +4,10 @@ set -e
 brew --version > /dev/null || (echo 'No Homebrew detected. Please install Homebrew from http://brew.sh/' ; false)
 
 # Install from Homebrew
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/miniconda2/bin:$PATH
 set -v
-brew install python
-brew install pygame
+brew cask install miniconda2
+pip install pygame
 pip install pyyaml
 pip install pypybox2d
 set +v
