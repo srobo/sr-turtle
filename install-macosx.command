@@ -18,3 +18,6 @@ pip install pyyaml
 pip install pypybox2d
 set +v
 
+echo Cleaning up...
+rm $TMPDIR
+
